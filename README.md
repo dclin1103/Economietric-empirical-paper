@@ -15,6 +15,7 @@ data/
         Tradeopenness.csv
         GFCF.csv
         democracy-index-polity.csv
+        democracy-index-polity extend.csv
         mean-years-of-schooling-long-run.csv
     clean/
 
