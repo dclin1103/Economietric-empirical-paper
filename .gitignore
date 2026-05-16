@@ -1,0 +1,21 @@
+# Stata temporary and log files
+*.smcl
+*.log
+*.tmp
+
+# macOS
+.DS_Store
+
+# Cleaned and generated data
+data/clean/*
+!data/clean/.gitkeep
+
+# Generated outputs
+output/tables/*
+!output/tables/.gitkeep
+
+output/figures/*
+!output/figures/.gitkeep
+
+output/logs/*
+!output/logs/.gitkeep
