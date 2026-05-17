@@ -6,8 +6,7 @@ This repository contains a Stata-based empirical project examining the relations
 
 ```text
 code/
-    original_code.do
-    final code.do
+    final＿code.do
 
 data/
     raw/
@@ -18,8 +17,12 @@ data/
         democracy-index-polity extend.csv
         mean-years-of-schooling-long-run.csv
     clean/
-
+        final_country_year_panel.dta
 output/
     tables/
+        table_outcome
     figures/
+        figure_1
+        figure_2
     logs/
+        final code.log
