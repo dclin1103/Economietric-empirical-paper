@@ -363,7 +363,7 @@ xtset country_id year
 *Lag-length checks
 
 xtreg growthrate stdDem L.growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_6_model 1_lag_checks.doc", replace ///
+outreg2 using "$TABLES/table_6_model_1_lag_checks.doc", replace ///
     title("Table 6: Growth Lag Checks") ///
     ctitle("Lag 1") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
@@ -371,7 +371,7 @@ outreg2 using "$TABLES/table_6_model 1_lag_checks.doc", replace ///
 
 forvalues lag = 2/6 {
     xtreg growthrate stdDem L(1/`lag').growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-    outreg2 using "$TABLES/table_6_model 1_lag_checks.doc", append ///
+    outreg2 using "$TABLES/table_6_model_1_lag_checks.doc", append ///
         ctitle("Lag 1-`lag'") ///
         drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
         addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
@@ -380,20 +380,20 @@ forvalues lag = 2/6 {
 *Model 1 outcome
 
 reg growthrate stdDem L(1/3).growthrate `control' `control_zero' , vce(cluster country_id)
-outreg2 using "$TABLES/table_7_model 1.doc", replace ///
+outreg2 using "$TABLES/table_7_model_1.doc", replace ///
     title("Table 7: Democracy and GDP Growth") ///
     ctitle("No FE") ///
     drop(tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, No, Year FE, No, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate stdDem L(1/3).growthrate `control' `control_zero' , fe vce(cluster country_id)
-outreg2 using "$TABLES/table_7_model 1.doc", append ///
+outreg2 using "$TABLES/table_7_model_1.doc", append ///
     ctitle("Country FE") ///
     drop(tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, No, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
  
 xtreg growthrate stdDem L(1/3).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_7_model 1.doc", append ///
+outreg2 using "$TABLES/table_7_model_1.doc", append ///
     ctitle("Country FE + Year FE") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
@@ -402,7 +402,7 @@ outreg2 using "$TABLES/table_7_model 1.doc", append ///
 *Lag-length checks
 
 xtreg growthrate c.stdDem##c.educ L.growthrate `control_noneduc' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_8_mode 2_lag_checks.doc", replace ///
+outreg2 using "$TABLES/table_8_model_2_lag_checks.doc", replace ///
     title("Table 8: Growth Lag Checks (Model 2)") ///
     ctitle("Lag 1") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
@@ -410,7 +410,7 @@ outreg2 using "$TABLES/table_8_mode 2_lag_checks.doc", replace ///
 
 forvalues lag = 2/5 {
     xtreg growthrate c.stdDem##c.educ L(1/`lag').growthrate `control_noneduc' `control_zero' i.year, fe vce(cluster country_id)
-    outreg2 using "$TABLES/table_8_mode 2_lag_checks.doc", append ///
+    outreg2 using "$TABLES/table_8_model_2_lag_checks.doc", append ///
         ctitle("Lag 1-`lag'") ///
         drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
         addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
@@ -418,20 +418,20 @@ forvalues lag = 2/5 {
 
 *Model 2 outcome
 reg growthrate c.stdDem##c.educ L(1/3).growthrate `control_noneduc' `control_zero', vce(cluster country_id)
-outreg2 using "$TABLES/table_9_model 2.doc", replace ///
+outreg2 using "$TABLES/table_9_model_2.doc", replace ///
     title("Table 9: Democracy and GDP Growth (Model 2)") ///
     ctitle("No FE") ///
     drop(tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, No, Year FE, No, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate c.stdDem##c.educ L(1/3).growthrate `control_noneduc' `control_zero', fe vce(cluster country_id)
-outreg2 using "$TABLES/table_9_model 2.doc", append ///
+outreg2 using "$TABLES/table_9_model_2.doc", append ///
     ctitle("Country FE") ///
     drop(tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, No, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate c.stdDem##c.educ L(1/3).growthrate `control_noneduc' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_9_model 2.doc", append ///
+outreg2 using "$TABLES/table_9_model_2.doc", append ///
     ctitle("Country FE + Year FE") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
@@ -475,23 +475,23 @@ outreg2 using "$TABLES/table_11_democracy_lag_robustness.doc", append ///
     addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate L(0/3).stdDem L(1/3).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_11_democracy_lag_robustness cont.doc", replace ///
+outreg2 using "$TABLES/table_11_democracy_lag_robustness_cont.doc", replace ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate L(0/2).stdDem L(1/3).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_11_democracy_lag_robustness cont.doc", append ///
+outreg2 using "$TABLES/table_11_democracy_lag_robustness_cont.doc", append ///
     title ("Table 11: Continue") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate L(0/1).stdDem L(1/3).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_11_democracy_lag_robustness cont.doc", append ///
+outreg2 using "$TABLES/table_11_democracy_lag_robustness_cont.doc", append ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
 xtreg growthrate stdDem L(1/3).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
-outreg2 using "$TABLES/table_11_democracy_lag_robustness cont.doc", append ///
+outreg2 using "$TABLES/table_11_democracy_lag_robustness_cont.doc", append ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
