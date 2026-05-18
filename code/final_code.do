@@ -443,7 +443,7 @@ outreg2 using "$TABLES/table_9_model_2.doc", append ///
 * Compare modle 1 and model 2 with country and year FE.
 xtreg growthrate stdDem L(1/3).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
 outreg2 using "$TABLES/table_10_model_comparison.doc", replace ///
-    title("Table 10: Baseline regression of two models") ///
+    title("Table 10: Baseline regression for model 1 and model 2") ///
     ctitle("Model 1") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Growth Lags, 3, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
@@ -459,7 +459,7 @@ outreg2 using "$TABLES/table_10_model_comparison.doc", append ///
 
 xtreg growthrate L(0/5).stdDem L(1/5).growthrate `control' `control_zero' i.year, fe vce(cluster country_id)
 outreg2 using "$TABLES/table_11_democracy_lag_robustness.doc", replace ///
-    title("Table 11: Growth Rate and stdDem Lag Chekcs") ///
+    title("Table 11: Growth Rate and stdDem Lag Checks") ///
     drop(i.year tradeopen_missing gfcf_missing educ_missing) ///
     addtext(Country FE, Yes, Year FE, Yes, Controls, Yes, Missing Indicators, Yes, SE clustered by country, Yes)
 
