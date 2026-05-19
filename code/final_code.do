@@ -8,7 +8,7 @@ version 18
 /* Before running this code, set the working directory to the repository root.
    Replace the path (/your/path/to) below with your local path. */
 
-cd "/your/path/to/Economietric-empirical-paper"
+cd "/your/path/to/Econometric-empirical-paper"
 
 global ROOT "`c(pwd)'"
 
